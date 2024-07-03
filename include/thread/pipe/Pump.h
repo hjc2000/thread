@@ -9,16 +9,16 @@ namespace thread
 {
 	template <typename T>
 	class Pump
-		: base::IPipeSource<T>
+		: thread::IPipeSource<T>
 	{
 	private:
-		std::shared_ptr<base::ISource<T>> _source;
-		base::List<std::shared_ptr<base::IConsumer<T>>> _consumer_list;
+		std::shared_ptr<thread::ISource<T>> _source;
+		base::List<std::shared_ptr<thread::IConsumer<T>>> _consumer_list;
 		bool _pump_started = false;
 		std::function<void(T &data)> _on_before_sending_data_to_consumer;
 
 	public:
-		Pump(std::shared_ptr<base::ISource<T>> source)
+		Pump(std::shared_ptr<thread::ISource<T>> source)
 		{
 			if (source == nullptr)
 			{
@@ -28,7 +28,7 @@ namespace thread
 			_source = source;
 		}
 
-		base::IList<std::shared_ptr<base::IConsumer<T>>> &ConsumerList() override
+		base::IList<std::shared_ptr<thread::IConsumer<T>>> &ConsumerList() override
 		{
 			return _consumer_list;
 		}
@@ -60,7 +60,7 @@ namespace thread
 				int ret = _source->ReadData(data);
 				if (ret < 0)
 				{
-					base::IPipeSource<T>::FlushEachConsumer();
+					thread::IPipeSource<T>::FlushEachConsumer();
 					return;
 				}
 
@@ -70,7 +70,7 @@ namespace thread
 					_on_before_sending_data_to_consumer(data);
 				}
 
-				base::IPipeSource<T>::SendDataToEachConsumer(data);
+				thread::IPipeSource<T>::SendDataToEachConsumer(data);
 			}
 		}
 	};

@@ -16,7 +16,7 @@ namespace thread
 
 		/// @brief 消费者列表
 		/// @return
-		virtual base::IList<std::shared_ptr<base::IConsumer<T>>> &ConsumerList() = 0;
+		virtual base::IList<std::shared_ptr<thread::IConsumer<T>>> &ConsumerList() = 0;
 
 		/// @brief 将数据送给每个消费者
 		/// @note 任何一个消费者在 SendFrame 方法中抛出异常都会导致本方法抛出异常，并且会
@@ -26,7 +26,7 @@ namespace thread
 		/// @param data
 		void SendDataToEachConsumer(T &data)
 		{
-			for (std::shared_ptr<base::IConsumer<T>> &consumer : ConsumerList())
+			for (std::shared_ptr<thread::IConsumer<T>> &consumer : ConsumerList())
 			{
 				if (consumer)
 				{
@@ -41,7 +41,7 @@ namespace thread
 		/// 其他消费者不受影响，那这些消费者就不应该在 Flush 方法中抛出异常。
 		void FlushEachConsumer()
 		{
-			for (std::shared_ptr<base::IConsumer<T>> &consumer : ConsumerList())
+			for (std::shared_ptr<thread::IConsumer<T>> &consumer : ConsumerList())
 			{
 				if (consumer)
 				{
