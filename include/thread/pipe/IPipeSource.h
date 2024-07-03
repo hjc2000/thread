@@ -1,7 +1,7 @@
 #pragma once
 #include <base/container/IList.h>
-#include <base/pipe/IConsumer.h>
 #include <memory>
+#include <thread/pipe/IConsumer.h>
 
 namespace base
 {

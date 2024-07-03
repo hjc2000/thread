@@ -1,7 +1,7 @@
 #pragma once
-#include <base/pipe/IPipeSource.h>
 #include <base/task/CancellationToken.h>
 #include <base/task/TaskCanceledException.h>
+#include <thread/pipe/IPipeSource.h>
 
 namespace base
 {
