@@ -46,7 +46,7 @@ namespace base
 			_on_before_sending_data_to_consumer = func;
 		}
 
-		void StartPump(std::shared_ptr<base::CancellationToken> cancellation_token)
+		virtual void PumpDataToConsumers(std::shared_ptr<base::CancellationToken> cancellation_token)
 		{
 			_pump_started = true;
 			T data{};
