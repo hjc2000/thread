@@ -15,11 +15,4 @@ target_import_src(${ProjectName})
 target_import_boost(${ProjectName} PUBLIC)
 target_import_base(${ProjectName} PUBLIC)
 
-if(has_thread)
-	message(STATUS "此平台拥有线程")
-	target_compile_definitions(${ProjectName} PUBLIC HAS_THREAD=1)
-else()
-	message(STATUS "此平台没有线程")
-endif()
-
 set(CMAKE_INSTALL_PREFIX ${cpp_lib_build_scripts_path}/${platform}/.libs/${ProjectName}/)
