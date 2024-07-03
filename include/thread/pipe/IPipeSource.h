@@ -3,7 +3,7 @@
 #include <memory>
 #include <thread/pipe/IConsumer.h>
 
-namespace base
+namespace thread
 {
 	/// @brief 管道式的数据源。
 	/// @note 管道出口可以连接多个消费者，向管道入口送入数据时会向所有消费者都送入一次。
@@ -50,4 +50,4 @@ namespace base
 			}
 		}
 	};
-} // namespace base
+} // namespace thread

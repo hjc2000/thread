@@ -1,6 +1,6 @@
 #pragma once
 
-namespace base
+namespace thread
 {
 	template <typename T>
 	class IConsumer
@@ -15,4 +15,4 @@ namespace base
 		/// @brief 冲洗消费者
 		virtual void Flush() = 0;
 	};
-} // namespace base
+} // namespace thread

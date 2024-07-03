@@ -5,7 +5,7 @@
 #include <thread/pipe/IPipeSource.h>
 #include <thread/pipe/ISource.h>
 
-namespace base
+namespace thread
 {
 	template <typename T>
 	class Pump
@@ -74,4 +74,4 @@ namespace base
 			}
 		}
 	};
-} // namespace base
+} // namespace thread
